@@ -4,6 +4,8 @@ namespace Problem52
 {
 	public class LeastRecentlyUsedCache
 	{
+		private readonly IDictionary<string, object> cache = new Dictionary<string, object>();
+
 		public LeastRecentlyUsedCache(int size)
 		{
 			Size = size;
@@ -16,9 +18,13 @@ namespace Problem52
 
 		}
 
-		public void Get(string key)
+		public object Get(string key)
 		{
+			var result = (object)null;
 
+			cache.TryGetValue(key, out result);
+
+			return result;
 		}
 	}
 }
